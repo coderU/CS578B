@@ -1,4 +1,5 @@
 DEBUG = True
+
 def reverse(B):
     if B == 'T':
         return 'F'
@@ -12,7 +13,7 @@ def init_condition(condition):
 
     condition['A=T|B=T,E=T'] = 0.95
     condition['A=F|B=T,E=T'] = 0.05
-    
+
     condition['A=T|B=T,E=F'] = 0.94
     condition['A=F|B=T,E=F'] = 0.06
 
@@ -27,10 +28,10 @@ def init_condition(condition):
 
     condition['M=T|A=T'] = 0.7
     condition['M=F|A=T'] = 0.3
-    
+
     condition['M=T|A=F'] = 0.01
     condition['M=F|A=F'] = 0.99
-    
+
 def bruteforce(condition, check, B, E, A, M):
     hash = 'B='+B+',E='+E+',A='+A+',M='+M+',J=T'
     value = check.get(hash)
@@ -54,8 +55,7 @@ def bruteforce(condition, check, B, E, A, M):
         bruteforce(condition, check,B,E,reverse(A),M)
         bruteforce(condition, check,B,E,A,reverse(M))
 
-def sum_product():
-    
+
 check = {}
 condition = {}
 init_condition(condition)
